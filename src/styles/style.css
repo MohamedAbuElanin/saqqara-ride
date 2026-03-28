@@ -1,0 +1,206 @@
+:root {
+  --bg-color: #1a1514;
+  --text-color: #f4d06f;
+  --primary-color: #8b5a2b;
+  --secondary-color: #3e2723;
+  --success-color: #4caf50;
+  --danger-color: #e53935;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  min-height: 60vh;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+h3 {
+  font-size: 1.3rem;
+  color: #d1b894; /* slightly muted accent color */
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.counters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  border: 1px solid rgba(244, 208, 111, 0.2);
+}
+
+.counters span {
+  font-weight: bold;
+  color: #fff;
+  margin-right: 0.5rem;
+  background: rgba(0,0,0,0.3);
+  padding: 0.2rem 0.8rem;
+  border-radius: 10px;
+}
+
+.buttons-container {
+  position: relative;
+  width: 100%;
+  height: 200px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+button {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.yes-btn {
+  background-color: var(--success-color);
+  color: white;
+  z-index: 10;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s;
+}
+
+.yes-btn:hover {
+  background-color: #45a049;
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  transform: translateY(-5px) scale(1.05);
+}
+
+.yes-btn.accepted-glow {
+  animation: glow 1.5s infinite alternate;
+  margin-top: 1rem;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px #4caf50, 0 0 20px #4caf50; }
+  to { box-shadow: 0 0 20px #4caf50, 0 0 40px #4caf50; }
+}
+
+.no-btn {
+  background-color: var(--danger-color);
+  color: white;
+  transition: top 0.25s ease-out, left 0.25s ease-out;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--text-color);
+  z-index: 1000;
+  animation: slideDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.popup-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.popup-message.success {
+  color: var(--success-color);
+}
+
+.popup-message.troll {
+  color: var(--danger-color);
+}
+
+@keyframes slideDown {
+  from { top: -50px; opacity: 0; transform: translateX(-50%) }
+  to { top: 20px; opacity: 1; transform: translateX(-50%) }
+}
+
+.success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.horse-icon {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+  animation: bounce 2s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+@media (max-width: 600px) {
+  #root { padding: 1rem; }
+  h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  h3 { font-size: 1.1rem; }
+  .counters { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1rem; width: 100%; border-radius: 10px; }
+  .counters div { font-size: 1.1rem; }
+  button { padding: 0.8rem 1.2rem; font-size: 1.1rem; border-radius: 20px; }
+  .buttons-container { gap: 1rem; height: 160px; }
+  .popup-overlay { width: 95%; text-align: center; padding: 0.8rem 1rem; }
+  .popup-message { font-size: 1.1rem; }
+  .horse-icon { font-size: 4rem; }
+}
