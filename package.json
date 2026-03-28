@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://mohamedabuelanin.github.io/saqqara-ride",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,12 +11,14 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
+  
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.0",
+    "gh-pages": "^6.3.0",
     "vite": "^8.0.3"
   }
 }
